@@ -10,7 +10,7 @@ const Cart = (props) => {
       <div className="grid grid-cols-1 md:grid-cols-2 px-10 py-2">
         <div>
           <h1 className="font-bold text-xs">Order Summary__</h1>
-          <p className="text-sm">Selected Items:{drink.length}</p>
+          <p className="text-sm font-bold">Selected Items:{drink.length}</p>
           <p>Total Price: $</p>
         </div>
         <div>
