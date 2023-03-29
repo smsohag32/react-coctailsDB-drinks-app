@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Banner from "../Banner/Banner";
 import Cart from "../Cart/Cart";
 import SingleCard from "../SingleCard/SingleCard";
-import { addToDb } from "../Utilities/FackDb";
+import { addToDb, getShoppingCart } from "../Utilities/FackDb";
 
 const Card = () => {
   const [data, setData] = useState([]);
@@ -11,11 +11,23 @@ const Card = () => {
   //   function
   const handleBuy = (drink) => {
     setIsBuy(true);
-    console.log(drink);
-    addToDb(drink.idDrink);
     const newCart = [...cart, drink];
     setCart(newCart);
+    addToDb(drink.idDrink);
   };
+  useEffect(() => {
+    const storedCart = getShoppingCart();
+    const savedCart = [];
+    for (const id in storedCart) {
+      const addedCart = data.find((item) => item.idDrink === id);
+      if (addedCart) {
+        const quantity = storedCart[id];
+        addedCart.id = quantity;
+        savedCart.push(addedCart);
+      }
+    }
+    setCart(savedCart);
+  }, [data]);
   useEffect(() => {
     fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a`)
       .then((res) => res.json())
