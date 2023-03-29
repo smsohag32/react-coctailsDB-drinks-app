@@ -3,7 +3,7 @@ import Li from "../Li/Li";
 
 const Cart = (props) => {
   const drink = props.cart;
-  console.log(drink);
+  // console.log(drink);
 
   return (
     <div className="rounded-md shadow-xl h-20">
