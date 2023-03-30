@@ -7,10 +7,7 @@ const Banner = () => {
     "Do anything diffarents",
   ];
   const articleIndex = 0;
-  const ar = setInterval(() => {
-    return article[articleIndex];
-    console.log(ar);
-  }, 1500);
+
   return (
     <div className="carousel w-full h-[450px]">
       <div id="slide1" className="carousel-item relative w-full">
@@ -49,7 +46,9 @@ const Banner = () => {
       <div id="slide4" className="carousel-item relative w-full">
         <img src="./blog2.png" className="w-full opacity-40" />
         <p className="absolute top-[50%] px-60 bg-opacity-60 text-black">
-          {ar}
+          {setInterval(() => {
+            return article[articleIndex];
+          }, 1500)}
         </p>
         <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
           <a href="#slide3" className="btn btn-circle">
